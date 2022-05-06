@@ -12,16 +12,5 @@ pipeline {
                 echo 'Application is in Build process'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sh 'mvn -DskipTests'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
     }
 }
