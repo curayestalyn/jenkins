@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn -Dmaven.test.skip=true'
+                echo 'mvn -Dmaven.test.skip=true'
             }
         }
         stage('SonarQube') {
