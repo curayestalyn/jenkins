@@ -18,12 +18,13 @@ pipeline {
         }
         stage('SonarQube') {
             steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh 'mvn verify sonar:sonar \
-                       -Dsonar.host.url=http://malic-devops.duckdns.org:9000 \
-                       -Dsonar.projectKey=musker \
-                       -Dsonar.projectName=Musker'
-                }
+                                    withSonarQubeEnv('sonarqube') {
+                                        sh 'mvn sonar:sonar \
+                                        -Dsonar.projectKey=musker \
+                                        -Dsonar.projectName=Musker \
+                                        -Dsonar.sources=src/main \
+                                        -Dsonar.java.binaries=target/classes'
+                                    }
             }
         }
         stage('Quality Gate') {
