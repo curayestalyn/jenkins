@@ -16,6 +16,14 @@ pipeline {
                 echo 'mvn -Dmaven.test.skip=true'
             }
         }
+        stage('Configure reports') {
+                        steps {
+                            sh 'mvn verify'
+                            jacoco classPattern: 'target/classes', execPattern: 'target/coverage-reports/jacoco-ut.exec', sourcePattern: 'src/main/java'
+                            jacoco sourceExclusionPattern: '**/*.html,**/*.js,**/*.css'
+                            jacoco runAlways: true
+                        }
+                    }
         stage('SonarQube') {
             steps {
                                     withSonarQubeEnv('sonarqube') {
