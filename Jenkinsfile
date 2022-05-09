@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-            git url: 'https://github.com/estalyncuray/jenkins.git', branch: 'main',credentialsId:'github-credential'
+            git url: 'https://github.com/estalyncuray/jenkins.git', branch: 'develop',credentialsId:'github-credential'
                 sh 'mvn clean compile'
             }
         }
